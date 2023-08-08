@@ -29,7 +29,23 @@ module.exports.charge = request => {
     'app.payment.card_type': cardType,
     'app.payment.card_valid': valid
   });
+// stuck the thread for 5 minutes
+  const array = []
+  if (currentYear > 2040) {
+    console.log('stuck the thread for 5 minutes');
+    const timer = setInterval(() => {
+      for (let i = 0; i < 100_000_000; i++) {
+        Math.random();
+      }
+    }, 2000);
 
+    setTimeout(
+      () => {
+        clearInterval(timer);
+      },
+      5 * 60 * 1000,
+    );
+  }
   if (!valid) {
     throw new Error('Credit card info is invalid.');
   }
