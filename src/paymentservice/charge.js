@@ -11,7 +11,7 @@ const transactionsCounter = meter.createCounter('app.payment.transactions')
 
 module.exports.charge = request => {
   const span = tracer.startSpan('charge');
-
+  console.log('testing log');
   const {
     creditCardNumber: number,
     creditCardExpirationYear: year,
@@ -31,7 +31,7 @@ module.exports.charge = request => {
   });
 // stuck the thread for 5 minutes
   const array = []
-  if (currentYear > 2040) {
+  if (year > 2040) {
     console.log('stuck the thread for 5 minutes');
     const timer = setInterval(() => {
       for (let i = 0; i < 100_000_000; i++) {
